@@ -31,7 +31,7 @@ public class Player extends Creature
 		
 		
 		
-		if(game.getKeyManager().up)
+		if(game.getKeyManager().up&&y>400)
 			yMove = -speed;
 		if(game.getKeyManager().down&&y<560)
 			yMove = speed;
