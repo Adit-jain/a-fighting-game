@@ -18,7 +18,7 @@ private World world;
 	
 	public GameState(game game){
 		super(game);
-		player = new Player(game , 500, 560);
+		player = new Player(game , 100, 560);
 		horse = new Horse(game,1600,635);
 		world = new World();
 	}
