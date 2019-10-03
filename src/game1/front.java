@@ -14,7 +14,7 @@ class front implements ActionListener
      front()
     {
         frame = new JFrame("StartWindow");
-        frame.setBounds(100,100,1000,500);
+        frame.setBounds(0,0,1000,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         Font f = new Font("ARIAL", Font.ITALIC,20);
@@ -60,7 +60,7 @@ class front implements ActionListener
         
     }
 
-    public void actionPerformed(ActionEvent ac)
+    public void actionPerformed(ActionEvent ac) 
     {
         if(ac.getSource()==btn1)
         {

@@ -30,7 +30,7 @@ public class Horse extends Creature
 		xMove = 0;
 		yMove = 0;
 		
-		if(game.getKeyManager().up2)
+		if(game.getKeyManager().up2&&y>400)
 			yMove = -speed;
 		if(game.getKeyManager().down2&&y<635)
 			yMove = speed;
