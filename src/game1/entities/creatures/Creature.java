@@ -9,7 +9,7 @@ public abstract class Creature extends Entity {
 	protected float xMove,yMove;
 	public static final int Default_health=10;
 	public static final float Default_speed  = 3.0f;
-	public static final int DC_height = 100,DC_width = 100;
+	public static final int DC_height = 350,DC_width = 200;
 
 	public Creature(float x, float y , int width, int height) {
 		super(x, y,width,height);
