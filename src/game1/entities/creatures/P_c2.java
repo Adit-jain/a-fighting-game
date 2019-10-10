@@ -42,7 +42,10 @@ public class P_c2 extends Creature
 		if(game.getKeyManager().atk2_1)
 				flagship = "p2a1";
 		if(game.getKeyManager().atk2_2)
+		{
 			flagship = "p2a2";
+			xMove = speed;
+		}
 		if(game.getKeyManager().atk2_3)
 			flagship = "p2a3";
 	}
