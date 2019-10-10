@@ -92,7 +92,7 @@ public class game implements Runnable
 			c_count++;
 		
 			
-				if(c_count==8)
+				if(c_count==9)
 					{
 						
 						count_c2++;
@@ -133,7 +133,7 @@ public class game implements Runnable
 		  bs.show();
 		  g.dispose();
 		  
-		  if(count_c2==11)
+		  if(count_c2==4)
 		  {
 			  count_c2 = 0;
 		  }
