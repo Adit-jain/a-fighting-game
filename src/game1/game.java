@@ -60,6 +60,7 @@ public class game implements Runnable
 	
 	public static int x = 0;
 	public static int count_c2 = 0;
+	public static int count_c21 = 0;
 
 	
 	public void run() 
@@ -96,6 +97,7 @@ public class game implements Runnable
 					{
 						
 						count_c2++;
+						count_c21++;
 						c_count=0;
 					}
 			}
@@ -136,6 +138,11 @@ public class game implements Runnable
 		  if(count_c2==4)
 		  {
 			  count_c2 = 0;
+		  }
+
+		  if(count_c21==6)
+		  {
+			  count_c21 = 2;
 		  }
 		  
 	}
