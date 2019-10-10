@@ -60,8 +60,8 @@ public class game implements Runnable
 	
 	public static int x = 0;
 	public static int count_c2 = 0;
-	public static int count_c21 = 0;
-
+	public static int arrSize = 0;
+	//GameState gS = new GameState(this);
 	
 	public void run() 
 	{
@@ -95,9 +95,8 @@ public class game implements Runnable
 			
 				if(c_count==9)
 					{
-						
 						count_c2++;
-						count_c21++;
+						//checkCount();
 						c_count=0;
 					}
 			}
@@ -115,8 +114,16 @@ public class game implements Runnable
 		return keyManager;
 	}
 	
+	public static void checkCount() {
+		if(count_c2>=game.arrSize)
+		  {
+			  count_c2 = 0;
+		  }
+	}
+	
 	private void render() 
 	{
+		  
 		  bs = display.getCanvas().getBufferStrategy();
 		  if(bs==null)
 		  {
@@ -127,7 +134,6 @@ public class game implements Runnable
 		  g.clearRect(0, 0, width, height);
 		  //Start drawing
 		  
-		  
 		 if(State.getState() != null)
 			State.getState().render(g);
 		  
@@ -135,15 +141,7 @@ public class game implements Runnable
 		  bs.show();
 		  g.dispose();
 		  
-		  if(count_c2==4)
-		  {
-			  count_c2 = 0;
-		  }
-
-		  if(count_c21==6)
-		  {
-			  count_c21 = 2;
-		  }
+		  checkCount();
 		  
 	}
 	
@@ -153,9 +151,10 @@ public class game implements Runnable
 		
 		//x += 1;
 		keyManager.tick();
-		if(State.getState() != null)
+		if(State.getState() != null) {
 			State.getState().tick();
-		
+			//checkCount();
+		}
 	}
 	public synchronized void start()
 	{	if(running)

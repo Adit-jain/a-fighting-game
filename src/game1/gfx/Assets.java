@@ -27,22 +27,7 @@ public class Assets {
 	public static BufferedImage bg;
 	
 	public static void init()
-	{
-		//player
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Run.jpg"));
-		for(int i=0;i<6;i++)
-		player[i] = sheet.crop((i*1024/6), 30, (1024/6), (1024/4));
-		
-		//horse
-		SpriteSheet s2 = new SpriteSheet(ImageLoader.loadImage("res/textures/horse.png"));
-		for(int i =0;i<4;i++)
-		{
-			for(int j=0;j<3;j++)
-			{
-				horse[(3*i)+j] = s2.crop(252*(j), 181*(i), 252, 181);
-			}
-		}
-		 
+	{	 
 		//background
 		bg = ImageLoader.loadImage("res/textures/area31.jpg");
 		
@@ -92,11 +77,16 @@ public class Assets {
 		c2_jump[3] = S21.crop(568,250,90,170);
 		c2_jump[4] = S21.crop(660,250,88,170);
 		c2_jump[5] = S21.crop(751,250,90,170);
-				
-				
+		c2_hurt[0] = S21.crop(0,410,75,120);		
+		c2_hurt[1] = S21.crop(75,410,90,120);	
+		c2_hurt[2] = S21.crop(170,410,90,120);
+		c2_hurt[3] = S21.crop(270,410,90,120);
+		c2_defeat[0] = S21.crop(440,410,90,120);
+		c2_defeat[1] = S21.crop(540,410,90,120);
+		c2_defeat[2] = S21.crop(630,410,105,120);
+		c2_defeat[3] = S21.crop(740,410,110,120);
+		c2_defeat[4] = S21.crop(850,410,130,120);		
 
-		
-		
 		
 		
 	}

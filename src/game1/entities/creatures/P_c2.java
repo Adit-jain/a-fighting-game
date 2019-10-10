@@ -1,7 +1,7 @@
 package game1.entities.creatures;
 
 import java.awt.Graphics;
-
+import java.awt.image.BufferedImage;
 import game1.gfx.Assets;
 import game1.game;
 
@@ -11,6 +11,8 @@ public class P_c2 extends Creature
 	private game g;
 	public String flagship="stand";
 	static int count=0;
+	public static BufferedImage[] c2;
+//	public static int arrSize;
 	
 	public P_c2(game g,float x, float y) {
 		super(x, y,Creature.DC_width,Creature.DC_height);
@@ -72,40 +74,60 @@ public class P_c2 extends Creature
 
 	public void render(Graphics g) 
 	{
-		int c_c2 = game.count_c2;
-		int c_c21 = game.count_c21;
+		int c_c2 = 0;
+		
 		//int pos = game.x;
 		int ty = (int) (y-200);
 		
 		
 		if(flagship == "stand")
 		{
-			g.drawImage(Assets.c2_stand[c_c2], (int) x, (int) y,DC_width,DC_height, null);
+			c2 = Assets.c2_stand; 
+			game.arrSize = c2.length-1;
+			game.checkCount();
+			c_c2 = game.count_c2;
+			g.drawImage(c2[c_c2], (int) x, (int) y,DC_width,DC_height, null);
 		}
 		else if(flagship == "p2a1")
 		{
-			g.drawImage(Assets.c2_a1[c_c2], (int) x, (int) y,300,DC_height, null);
+			c2 = Assets.c2_a1; 
+			game.arrSize = c2.length-1;
+			game.checkCount();
+			c_c2 = game.count_c2;
+			g.drawImage(c2[c_c2], (int) x, (int) y,300,DC_height, null);
 			flagship = "stand";
 			if(y<600)
 				y=600;
 		}
 		else if(flagship == "p2a2")
 		{
-			g.drawImage(Assets.c2_a2[c_c2], (int) x, (int) y,300,DC_height, null);
+			c2 = Assets.c2_a2; 
+			game.arrSize = c2.length-1;
+			game.checkCount();
+			c_c2 = game.count_c2;
+			g.drawImage(c2[c_c2], (int) x, (int) y,300,DC_height, null);
 			flagship = "stand";
 			if(y<600)
 				y=600;
 		}
 		else if(flagship == "p2a3")
 		{
-			g.drawImage(Assets.c2_a3[c_c2], (int) x, (int) y,300,DC_height, null);
+			c2 = Assets.c2_a3; 
+			game.arrSize = c2.length-1;
+			game.checkCount();
+			c_c2 = game.count_c2;
+			g.drawImage(c2[c_c2], (int) x, (int) y,300,DC_height, null);
 			flagship = "stand";
 			if(y<600)
 				y=600;
 		}
 		else if(flagship == "jump")
 		{
-			g.drawImage(Assets.c2_spin[c_c21], (int) x, (int) y,250,DC_height, null);
+			c2 = Assets.c2_spin; 
+			game.arrSize = c2.length-1;
+			game.checkCount();
+			c_c2 = game.count_c2;
+			g.drawImage(c2[c_c2], (int) x, (int) y,250,DC_height, null);
 			if(y>600&&count==0)
 			{
 				flagship="stand";
