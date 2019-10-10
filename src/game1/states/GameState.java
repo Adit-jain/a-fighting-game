@@ -18,7 +18,7 @@ private P_c2 P_2;
 	public GameState(game game){
 		super(game);
 		world = new World();
-		P_2 = new P_c2(game,700,700);
+		P_2 = new P_c2(game,300,600);
 	}
 	
 	@Override

@@ -44,7 +44,7 @@ public class Assets {
 		}
 		 
 		//background
-		bg = ImageLoader.loadImage("res/textures/bg.jpg");
+		bg = ImageLoader.loadImage("res/textures/area31.jpg");
 		
 		// Player c2
 		SpriteSheet S2 = new SpriteSheet(ImageLoader.loadImage("res/textures/BlueNinja2.png"));

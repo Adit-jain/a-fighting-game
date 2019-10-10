@@ -41,13 +41,16 @@ public class P_c2 extends Creature
 			xMove = -speed;
 		if(game.getKeyManager().atk2_1)
 				flagship = "p2a1";
-		if(game.getKeyManager().atk2_2)
+		if(game.getKeyManager().atk2_2&&x<1650)
 		{
 			flagship = "p2a2";
 			xMove = speed;
 		}
-		if(game.getKeyManager().atk2_3)
+		if(game.getKeyManager().atk2_3&&x<1650)
+		{
 			flagship = "p2a3";
+			xMove = 2*speed;
+		}
 	}
 
 	
@@ -57,21 +60,21 @@ public class P_c2 extends Creature
 		//int pos = game.x;
 		if(flagship == "stand")
 		{
-			g.drawImage(Assets.c2_stand[c_c2], (int) x, (int) y, null);
+			g.drawImage(Assets.c2_stand[c_c2], (int) x, (int) y,DC_width,DC_height, null);
 		}
 		else if(flagship == "p2a1")
 		{
-			g.drawImage(Assets.c2_a1[c_c2], (int) x, (int) y, null);
+			g.drawImage(Assets.c2_a1[c_c2], (int) x, (int) y,300,DC_height, null);
 			flagship = "stand";
 		}
 		else if(flagship == "p2a2")
 		{
-			g.drawImage(Assets.c2_a2[c_c2], (int) x, (int) y, null);
+			g.drawImage(Assets.c2_a2[c_c2], (int) x, (int) y,300,DC_height, null);
 			flagship = "stand";
 		}
 		else if(flagship == "p2a3")
 		{
-			g.drawImage(Assets.c2_a3[c_c2], (int) x, (int) y, null);
+			g.drawImage(Assets.c2_a3[c_c2], (int) x, (int) y,300,DC_height, null);
 			flagship = "stand";
 		}
 	

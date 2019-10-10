@@ -27,7 +27,11 @@ public class display {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
 		frame.setVisible(true);
+		
+
+		
 		
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(width,height));
