@@ -1,8 +1,7 @@
 package game1.states;
 import game1.World;
 import game1.game;
-import game1.entities.creatures.Horse;
-import game1.entities.creatures.Player;
+import game1.entities.creatures.P_c2;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,23 +11,21 @@ import game1.gfx.Assets;
 
 public class GameState extends State {
 
-private Player player;
-private Horse horse;
+
 private World world;
+private P_c2 P_2;
 	
 	public GameState(game game){
 		super(game);
-		player = new Player(game , 200, 560);
-		horse = new Horse(game,1600,635);
 		world = new World();
+		P_2 = new P_c2(game,500,500);
 	}
 	
 	@Override
 	public void tick() 
 	{
 		world.tick();
-		player.tick();
-		horse.tick();
+		P_2.tick();
 	}
 	
 
@@ -36,9 +33,7 @@ private World world;
 	public void render(Graphics g) 
 	{
 		world.render(g);
-		player.render(g);
-		horse.render(g);
-		
+		P_2.render(g);
 	}
 
 }

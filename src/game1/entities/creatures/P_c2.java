@@ -3,15 +3,14 @@ package game1.entities.creatures;
 import java.awt.Graphics;
 
 import game1.gfx.Assets;
-import game1.gfx.ImageLoader;
 import game1.game;
 
 
-public class Horse extends Creature
+public class P_c2 extends Creature
 {
 	private game g;
 	
-	public Horse(game g,float x, float y) {
+	public P_c2(game g,float x, float y) {
 		super(x, y,Creature.DC_width,Creature.DC_height);
 		this.g=g;
 	}
@@ -43,9 +42,9 @@ public class Horse extends Creature
 	
 	public void render(Graphics g) 
 	{
-		int c_h = game.counthor;
+		int c_c2 = game.count_c2;
 		//int pos = game.x;
-		g.drawImage(Assets.horse[c_h], (int) x, (int) y, null);
+		g.drawImage(Assets.c5[c_c2], (int) x, (int) y, DC_width, DC_height, null);
 		//g.drawImage(ImageLoader.loadImage("res/textures/test.png"), (int) x, (int) y, null);
 			
 	}

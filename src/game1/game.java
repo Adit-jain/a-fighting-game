@@ -59,8 +59,7 @@ public class game implements Runnable
 	}
 	
 	public static int x = 0;
-	public static int countrun = 0;
-	public static int counthor = 0;
+	public static int count_c2 = 0;
 
 	
 	public void run() 
@@ -73,7 +72,7 @@ public class game implements Runnable
 		long lastTime = System.nanoTime();
 		long timer = 0;
 		int ticks = 0;
-		int c_countrun = 0;
+		int c_count = 0;
 		
 		
 		
@@ -90,19 +89,19 @@ public class game implements Runnable
 			render();
 			ticks++;
 			delta--;
-			c_countrun++;
+			c_count++;
 		
 			
-				if(c_countrun==8)
+				if(c_count==8)
 					{
-						countrun++;
-						counthor++;
-						c_countrun=0;
+						
+						count_c2++;
+						c_count=0;
 					}
 			}
 			if(timer>=1000000000)
 			{
-				System.out.println("ticks and frames:" + ticks);
+				//System.out.println("ticks and frames:" + ticks);
 				ticks = 0;
 				timer = 0;
 			}
@@ -133,16 +132,15 @@ public class game implements Runnable
 		  //End drawing
 		  bs.show();
 		  g.dispose();
-		  if(countrun==5)
+		  
+		  if(count_c2==11)
 		  {
-			  countrun=0;
+			  count_c2 = 0;
 		  }
-		  if(counthor==11)
-		  {
-			  counthor=0;
-		  }
-		
+		  
 	}
+	
+	
 	private void tick() 
 	{
 		
