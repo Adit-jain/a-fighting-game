@@ -38,7 +38,7 @@ public class P_c2 extends Creature
 		}
 		if(game.getKeyManager().up2&&y>600)
 			yMove = -speed;
-		if(game.getKeyManager().down2&&y<800)
+		if(game.getKeyManager().down2&&y<750)
 			yMove = speed;
 		if(game.getKeyManager().right2&&x<1650)
 			xMove = speed;
