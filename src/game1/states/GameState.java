@@ -2,6 +2,7 @@ package game1.states;
 import game1.World;
 import game1.game;
 import game1.entities.creatures.P_c2;
+import game1.entities.creatures.P_c3;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,11 +15,13 @@ public class GameState extends State {
 
 private World world;
 private P_c2 P_2;
+private P_c3 P_3;
 	
 	public GameState(game game){
 		super(game);
 		world = new World();
 		P_2 = new P_c2(game,300,600);
+		P_3 = new P_c3(game,700,600);
 	}
 	
 	@Override
@@ -26,6 +29,7 @@ private P_c2 P_2;
 	{
 		world.tick();
 		P_2.tick();
+		P_3.tick();
 	}
 	
 
@@ -34,6 +38,7 @@ private P_c2 P_2;
 	{
 		world.render(g);
 		P_2.render(g);
+		P_3.render(g);
 	}
 
 }

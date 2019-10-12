@@ -59,7 +59,8 @@ public class game implements Runnable
 	}
 	
 	public static int x = 0;
-	public static int count_c2 = 0;
+	public static int count_c2 = 0, arrSize = 0;
+	public static int count_c3 = 0, arrSize2 = 0;
 	public static int count_c21 = 0;
 
 	
@@ -97,6 +98,7 @@ public class game implements Runnable
 					{
 						
 						count_c2++;
+						count_c3++;
 						count_c21++;
 						c_count=0;
 					}
@@ -113,6 +115,20 @@ public class game implements Runnable
 	
 	public static KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public static void checkCount() {
+		if(count_c2>game.arrSize)
+		  {
+			  count_c2 = 0;
+		  }
+	}
+	
+	public static void checkCount2() {
+		if(count_c3>game.arrSize2)
+		  {
+			  count_c3 = 0;
+		  }
 	}
 	
 	private void render() 
@@ -135,11 +151,7 @@ public class game implements Runnable
 		  bs.show();
 		  g.dispose();
 		  
-		  if(count_c2==4)
-		  {
-			  count_c2 = 0;
-		  }
-
+		  
 		  if(count_c21==6)
 		  {
 			  count_c21 = 2;
