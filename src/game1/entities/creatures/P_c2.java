@@ -3,6 +3,7 @@ package game1.entities.creatures;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import game1.gfx.Assets;
+import game1.states.State;
 import game1.game;
 
 
@@ -12,10 +13,15 @@ public class P_c2 extends Creature
 	public String flagship="stand";
 	static int count=0;
 	public static BufferedImage[] c2;
+	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
 	
 	public P_c2(game g,float x, float y) {
 		super(x, y,Creature.DC_width,Creature.DC_height);
-		this.g=g;
+		this.g=g;	
+		bounds.x = 0;
+		bounds.y = 0;
+		bounds.width = getWidth();
+		bounds.height = getHeight();
 	}
 	
 	
@@ -34,28 +40,48 @@ public class P_c2 extends Creature
 		if(y<=600 && count ==0)
 		{
 		
-				yMove = 6;
+				yMove = 8;
 				xMove = 1;
 		}
 		if(game.getKeyManager().up2&&y>600)
+			{
 			yMove = -speed;
+			flagship = "running";
+			}
 		if(game.getKeyManager().down2&&y<750)
+			{
 			yMove = speed;
+			flagship = "running";
+			}
 		if(game.getKeyManager().right2&&x<1650)
+			{
 			xMove = speed;
+			flagship = "running";
+			}
 		if(game.getKeyManager().left2&&x>20)
+			{
 			xMove = -speed;
+			flagship = "running";
+			}
 		if(game.getKeyManager().atk2_1)
-				flagship = "p2a1";
+			{
+			flagship = "p2a1";
+			if(checkEntityCollisions() && checkTimerNext())
+			State.getState().getP3().hurt(1);
+			}
 		if(game.getKeyManager().atk2_2&&x<1650)
 		{
 			flagship = "p2a2";
 			xMove = speed;
+			if(checkEntityCollisions() && checkTimerNext())
+			State.getState().getP3().hurt(1);
 		}
 		if(game.getKeyManager().atk2_3&&x<1650)
 		{
 			flagship = "p2a3";
 			xMove = 2*speed;
+			if(checkEntityCollisions() && checkTimerNext())
+			State.getState().getP3().hurt(1);
 		}
 		if(game.getKeyManager().jump2&&y>=600&&x<1350)
 		{
@@ -64,7 +90,7 @@ public class P_c2 extends Creature
 		}
 		if(flagship == "jump" && count ==1 )
 		{
-			yMove = -6;
+			yMove = -8;
 			xMove = 1;
 					if(y<350)
 						count=0;
@@ -74,26 +100,38 @@ public class P_c2 extends Creature
 	public void render(Graphics g) 
 	{
 		int c_c2 = 0;
-		int c_c21 = game.count_c21;
-		//int pos = game.x;
-		int ty = (int) (y-200);
-		
+		int c_c21 = game.count_c21;		
 		
 		if(flagship == "stand")
 		{
 			c2 = Assets.c2_stand; 
+			setWH(170,DC_height);
 			game.arrSize = c2.length-1;
 			game.checkCount();
 			c_c2 = game.count_c2;
-			g.drawImage(c2[c_c2], (int) x, (int) y,DC_width,DC_height, null);
+			g.drawImage(c2[c_c2], (int) x, (int) y,this.width,this.height, null);
 		}
+		else if(flagship == "running")
+		{
+			c2 = Assets.c2_run; 
+			setWH(300,DC_height); 
+			game.arrSize = c2.length-1;
+			game.checkCount();
+			c_c2 = game.count_c2;
+			g.drawImage(c2[c_c2], (int) x, (int) y,this.width,this.height, null);
+			flagship = "stand";
+			if(y<600)
+				y=600;
+		}
+		
 		else if(flagship == "p2a1")
 		{
 			c2 = Assets.c2_a1; 
+			setWH(300,DC_height); 
 			game.arrSize = c2.length-1;
 			game.checkCount();
 			c_c2 = game.count_c2;
-			g.drawImage(c2[c_c2], (int) x, (int) y,300,DC_height, null);
+			g.drawImage(c2[c_c2], (int) x, (int) y,this.width,this.height, null);
 			flagship = "stand";
 			if(y<600)
 				y=600;
@@ -101,22 +139,24 @@ public class P_c2 extends Creature
 		else if(flagship == "p2a2")
 		{
 			
-			c2 = Assets.c2_a2; 
+			c2 = Assets.c2_a2;  
+			setWH(300,DC_height+50);
 			game.arrSize = c2.length-1;
 			game.checkCount();
 			c_c2 = game.count_c2;
-			g.drawImage(c2[c_c2], (int) x, (int) y,300,DC_height, null);
+			g.drawImage(c2[c_c2], (int) x, (int) y,this.width,this.height, null);
 			flagship = "stand";
 			if(y<600)
 				y=600;
 		}
 		else if(flagship == "p2a3")
 		{
-			c2 = Assets.c2_a3; 
+			c2 = Assets.c2_a3;  
+			setWH(300,DC_height);
 			game.arrSize = c2.length-1;
 			game.checkCount();
 			c_c2 = game.count_c2;
-			g.drawImage(c2[c_c2], (int) x, (int) y,300,DC_height, null);
+			g.drawImage(c2[c_c2], (int) x, (int) y,this.width,this.height, null);
 			flagship = "stand";
 			if(y<600)
 				y=600;
@@ -130,10 +170,36 @@ public class P_c2 extends Creature
 			}
 			
 		}
-	
-	
-			
+					
 	}
-		
+	
+	
+	@Override
+	public void hurt(int amt){
+		super.hurt(amt);
+		//hurt graphics
+		if(health <= 0){
+			System.out.println("Defeated P2");
+			//die graphics
+			//Defeat 
+		}
+	}
+	
+	private boolean checkTimerNext() {
+		attackTimer += System.currentTimeMillis() - lastAttackTimer;
+		lastAttackTimer = System.currentTimeMillis();
+		if(attackTimer < attackCooldown)
+			return false;
+		else {
+			attackTimer = 0;
+			return true;	
+		}
+	}
+	
+	private void setWH(int width, int height) {
+		setWidth(width);
+		setHeight(height);
+	}
+	
 	}
 

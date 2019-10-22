@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener{
 	
 	private boolean[] keys;
-	public boolean up,down,left,right,up2,down2,left2,right2,atk2_1,atk2_2,atk2_3,jump2;
+	public boolean up3,down3,left3,right3,up2,down2,left2,right2,atk2_1,atk2_2,atk2_3,jump2,atk3_1,atk3_2,atk3_3,jump3;
 	
 	public KeyManager() 
 	{
@@ -15,20 +15,24 @@ public class KeyManager implements KeyListener{
 	
 	public void tick()
 	{
-		//player1
-		up = keys[KeyEvent.VK_W];
-		right = keys[KeyEvent.VK_D];
-		left = keys[KeyEvent.VK_A];
-		down = keys[KeyEvent.VK_S];
+		//player3
+		up3 = keys[KeyEvent.VK_UP];
+		right3 = keys[KeyEvent.VK_RIGHT];
+		left3 = keys[KeyEvent.VK_LEFT];
+		down3 = keys[KeyEvent.VK_DOWN];
+		atk3_1 = keys[KeyEvent.VK_J];
+		atk3_2 = keys[KeyEvent.VK_K];
+		atk3_3 = keys[KeyEvent.VK_L];
+		jump3 = keys[KeyEvent.VK_SHIFT];
 		
 		//player 2
-		up2 = keys[KeyEvent.VK_UP];
-		right2 = keys[KeyEvent.VK_RIGHT];
-		left2 = keys[KeyEvent.VK_LEFT];
-		down2 = keys[KeyEvent.VK_DOWN];
-		atk2_1 = keys[KeyEvent.VK_4];
-		atk2_2 = keys[KeyEvent.VK_5];
-		atk2_3 = keys[KeyEvent.VK_6];
+		up2 = keys[KeyEvent.VK_W];
+		right2 = keys[KeyEvent.VK_D];
+		left2 = keys[KeyEvent.VK_A];
+		down2 = keys[KeyEvent.VK_S];
+		atk2_1 = keys[KeyEvent.VK_Z];
+		atk2_2 = keys[KeyEvent.VK_X];
+		atk2_3 = keys[KeyEvent.VK_C];
 		jump2 = keys[KeyEvent.VK_SPACE];
 		
 	}

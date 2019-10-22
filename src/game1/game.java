@@ -23,11 +23,7 @@ public class game implements Runnable
 	public String title;
 	
 	private boolean running = false;
-	private Thread thread;
-	
-	private BufferedImage test;
-	private SpriteSheet sheet;
-	
+	private Thread thread;	
 	private BufferStrategy bs;
 	public static Graphics g;
 	
@@ -61,7 +57,7 @@ public class game implements Runnable
 	public static int x = 0;
 	public static int count_c2 = 0, arrSize = 0;
 	public static int count_c3 = 0, arrSize2 = 0;
-	public static int count_c21 = 0;
+	public static int count_c21 = 0, count_c31=0;
 
 	
 	public void run() 
@@ -100,6 +96,7 @@ public class game implements Runnable
 						count_c2++;
 						count_c3++;
 						count_c21++;
+						count_c31++;
 						c_count=0;
 					}
 			}
@@ -156,14 +153,16 @@ public class game implements Runnable
 		  {
 			  count_c21 = 2;
 		  }
+		  if(count_c31==6)
+		  {
+			  count_c31 = 2;
+		  }
 		  
 	}
 	
 	
 	private void tick() 
 	{
-		
-		//x += 1;
 		keyManager.tick();
 		if(State.getState() != null)
 			State.getState().tick();
