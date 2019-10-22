@@ -3,6 +3,7 @@ package game1.states;
 import java.awt.Graphics;
 
 import game1.game;
+import game1.entities.Entity;
 
 
 public abstract class State {
@@ -28,5 +29,15 @@ public abstract class State {
 	public abstract void tick();
 	
 	public abstract void render(Graphics g);
+
+	public Entity getP2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Entity getP3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

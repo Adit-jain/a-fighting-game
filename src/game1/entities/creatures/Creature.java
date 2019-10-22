@@ -1,27 +1,36 @@
 package game1.entities.creatures;
 
 import game1.entities.Entity;
+import game1.states.State;
+
 
 public abstract class Creature extends Entity {
 	
-	protected int health;
+	
 	protected float speed;
 	protected float xMove,yMove;
-	public static final int Default_health=10;
+	
 	public static final float Default_speed  = 3.0f;
-	public static final int DC_height = 260,DC_width = 170;
+	public static final int DC_height = 260,DC_width = 250;
 
 	public Creature(float x, float y , int width, int height) {
 		super(x, y,width,height);
-		health = Default_health;
-		speed = Default_speed;
 		
+		speed = Default_speed;	
 		
 	}
 	
 	public void move()
 	{
-		x += xMove;
+		if((State.getState().getP2().getX()+State.getState().getP2().getWidth()-25) < State.getState().getP3().getX()+25)
+			x += xMove;
+		else {
+			if(this == State.getState().getP2())
+				x = State.getState().getP2().getX()-1;
+			else if(this == State.getState().getP3())
+				x = State.getState().getP3().getX()+1;
+		}
+		
 		y += yMove;
 	}
 //Getters and Setters

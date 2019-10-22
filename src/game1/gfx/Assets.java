@@ -22,7 +22,7 @@ public class Assets {
 	// Player Black Ninja
 	public static BufferedImage[] c3_a1 = new BufferedImage[5];
 	public static BufferedImage[] c3_a2 = new BufferedImage[8];
-	public static BufferedImage[] c3_a3 = new BufferedImage[7];
+	public static BufferedImage[] c3_a3 = new BufferedImage[5];
 	public static BufferedImage[] c3_throw = new BufferedImage[3];
 	public static BufferedImage[] c3_stand = new BufferedImage[5];
 	public static BufferedImage[] c3_sit = new BufferedImage[2];

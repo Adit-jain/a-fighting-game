@@ -21,7 +21,7 @@ private P_c3 P_3;
 		super(game);
 		world = new World();
 		P_2 = new P_c2(game,300,600);
-		P_3 = new P_c3(game,700,600);
+		P_3 = new P_c3(game,1200,600);
 	}
 	
 	@Override
@@ -39,6 +39,15 @@ private P_c3 P_3;
 		world.render(g);
 		P_2.render(g);
 		P_3.render(g);
+	}
+	
+	
+	public P_c2 getP2() {
+		return P_2;
+	}
+	
+	public P_c3 getP3() {
+		return P_3;
 	}
 
 }
