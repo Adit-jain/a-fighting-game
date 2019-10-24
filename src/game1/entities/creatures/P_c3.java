@@ -97,12 +97,14 @@ public class P_c3 extends Creature
 		}
 	}
 
+	static int temp = 0;
+	static boolean dead = false;
 	public void render(Graphics g) 
 	{
 		int c_c3 = 0;
 		int c_c31 = game.count_c31;
 		
-		if(flagship == "stand")
+		if(flagship == "stand"&&dead==false)
 		{
 			c3 = Assets.c3_stand;
 			setWH(120,DC_height);
@@ -111,7 +113,7 @@ public class P_c3 extends Creature
 			c_c3 = game.count_c3;
 			g.drawImage(c3[c_c3], (int) x, (int) y,this.width,this.height, null);
 		}
-		else if(flagship == "running")
+		else if(flagship == "running"&&dead==false)
 		{
 			c3 = Assets.c3_run; 
 			setWH(250,DC_height);
@@ -124,7 +126,7 @@ public class P_c3 extends Creature
 				y=600;
 		}
 		
-		else if(flagship == "p2a1")
+		else if(flagship == "p2a1"&&dead==false)
 		{
 			c3 = Assets.c3_a1; 
 			setWH(250,DC_height);
@@ -136,7 +138,7 @@ public class P_c3 extends Creature
 			if(y<600)
 				y=600;
 		}
-		else if(flagship == "p2a2")
+		else if(flagship == "p2a2"&&dead==false)
 		{
 			
 			c3 = Assets.c3_a2; 
@@ -149,7 +151,7 @@ public class P_c3 extends Creature
 			if(y<600)
 				y=600;
 		}
-		else if(flagship == "p2a3")
+		else if(flagship == "p2a3"&&dead==false)
 		{
 			c3 = Assets.c3_a3;
 			setWH(250,DC_height+100);
@@ -161,7 +163,53 @@ public class P_c3 extends Creature
 			if(y<600)
 				y=600;
 		}
-		else if(flagship == "jump")
+		else if(flagship == "hurt"&&dead==false)
+		{
+				if(temp==0)
+				{
+					game.count_c3=0;
+					temp=1;
+				}
+				c3 = Assets.c3_hurt;  
+				setWH(200,DC_height);
+				game.arrSize2 = c3.length-1;
+				game.checkCount2();
+				c_c3 = game.count_c3;
+				//time.sleep(500000);
+				//c_c22++;
+				g.drawImage(c3[c_c3], (int) x, (int) y,this.width,this.height, null);
+				if(c_c3==game.arrSize2)
+				{
+					flagship="stand";
+					temp=0;
+				}	
+				if(y<600)
+					y=600;
+			
+			
+		}
+		else if(flagship == "death"&&dead==false)
+		{
+			c3 = Assets.c3_defeat;  
+			setWH(300,DC_height);
+			game.arrSize2 = c3.length-1;
+			game.checkCount2();
+			c_c3 = game.count_c3;
+			g.drawImage(c3[c_c3], (int) x, (int) y,this.width,this.height, null);
+			if(c_c3==game.arrSize2)
+			{
+				flagship="dead";
+				dead = true;
+			}
+			if(y<600)
+				y=600;
+		}
+		
+		else if (flagship=="dead")
+		{
+			g.drawImage(Assets.c3_defeat[4], (int) x, (int) y,250,DC_height, null);
+		}
+		else if(flagship == "jump"&&dead==false)
 		{
 			g.drawImage(Assets.c3_spin[c_c31], (int) x, (int) y,250,DC_height, null);
 			if(y>600&&count==0)
@@ -176,11 +224,11 @@ public class P_c3 extends Creature
 	@Override
 	public void hurt(int amt){
 		super.hurt(amt);
-		//hurt graphics
+		if(health>0)
+			flagship="hurt";
 		if(health <= 0){
 			System.out.println("Defeated P3");
-			//die graphics
-			//Defeat 
+			flagship="death";
 		}
 	}	
 	

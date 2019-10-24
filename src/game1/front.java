@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import game1.display.display;
 import game1.gfx.Assets;
-class front implements ActionListener
+public class front implements ActionListener
 {
 
     JLabel lab,sac;
@@ -13,7 +13,7 @@ class front implements ActionListener
     JButton btn3;
     JFrame frame;
     
-     front()
+     public front()
     {
         frame = new JFrame("AKD presents");
         frame.setBounds(0,0,1000,500);

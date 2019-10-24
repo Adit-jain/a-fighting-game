@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class display {
 	
-	private JFrame frame;
+	private static JFrame frame;
 	private Canvas canvas;
 	private String title;
 	private int width,height;
@@ -48,7 +48,7 @@ public class display {
 		return canvas;
 	}
 	
-	public JFrame getFrame()
+	public static JFrame getFrame()
 	{
 		return frame;
 	}
