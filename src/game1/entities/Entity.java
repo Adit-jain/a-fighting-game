@@ -22,7 +22,7 @@ public abstract class Entity {
 	}
 	
 	public boolean checkEntityCollisions(){
-		if(State.getState().getP3().getCollisionBounds(0f, 0f).intersects(State.getState().getP2().getCollisionBounds(0f, 0f)))
+		if(State.getState().getP3().getCollisionBounds(0f, 50f).intersects(State.getState().getP2().getCollisionBounds(0f, 50f)))
 			return true;
 		else
 			return false;
@@ -71,6 +71,14 @@ public abstract class Entity {
 	public void hurt(int amt) {
 		this.health -= amt;
 		
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
 	}
 	
 }

@@ -3,9 +3,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-
 import javax.imageio.ImageIO;
-
+import javax.swing.JPanel;
+import game1.restore_defaults;
 import game1.display.display;
 import game1.gfx.Assets;
 import game1.gfx.ImageLoader;
@@ -21,11 +21,12 @@ public class game implements Runnable
 	public static int width;
 	public static int height;
 	public String title;
+	public static boolean gameOver = false;
 	
 	private boolean running = false;
 	private Thread thread;	
 	private BufferStrategy bs;
-	public static Graphics g;
+	public Graphics g;
 	
 	//states
 	private State gameState;
@@ -43,6 +44,7 @@ public class game implements Runnable
 		this.height= height;
 		this.title = title;
 		keyManager = new KeyManager();
+	//	init();
 	}
 	private void init()
 	{
@@ -57,7 +59,7 @@ public class game implements Runnable
 	public static int x = 0;
 	public static int count_c2 = 0, arrSize = 0;
 	public static int count_c3 = 0, arrSize2 = 0;
-	public static int count_c21 = 0, count_c31=0;
+	public static int count_c21 = 0, count_c31 = 0;
 
 	
 	public void run() 
@@ -140,10 +142,9 @@ public class game implements Runnable
 		  g.clearRect(0, 0, width, height);
 		  //Start drawing
 		  
-		  
 		 if(State.getState() != null)
 			State.getState().render(g);
-		  
+
 		  //End drawing
 		  bs.show();
 		  g.dispose();
@@ -170,7 +171,7 @@ public class game implements Runnable
 	}
 	public synchronized void start()
 	{	if(running)
-		return;
+		stop();
 		running = true;
 		thread = new Thread(this);
 		thread.start();
@@ -186,4 +187,13 @@ public class game implements Runnable
 			e.printStackTrace();
 		} 
 	}
+	
+	public void quit() 
+	{		
+		display.getFrame().dispose();
+		running = false;
+		new restore_defaults(this);
+		new front();	
+	}
+	
 }
