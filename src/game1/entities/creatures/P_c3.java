@@ -9,15 +9,18 @@ import game1.game;
 
 public class P_c3 extends Creature
 {
-	private game g;
+	private game gm;
 	public String flagship="stand";
 	static int count=0;
 	public static BufferedImage[] c3;
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
+	private static int temp = 0;
+	public static boolean dead = false;
+	
 	
 	public P_c3(game g,float x, float y) {
 		super(x, y,Creature.DC_width,Creature.DC_height);
-		this.g=g;
+		this.gm=g;
 		bounds.x = 0;
 		bounds.y = 0;
 		bounds.width = getWidth();
@@ -29,8 +32,10 @@ public class P_c3 extends Creature
 	@Override
 	public void tick() 
 	{
+		if(!game.gameOver) {
 		getInput();
 		move();
+		}
 		
 	}
 	public void getInput()
@@ -97,8 +102,6 @@ public class P_c3 extends Creature
 		}
 	}
 
-	static int temp = 0;
-	static boolean dead = false;
 	public void render(Graphics g) 
 	{
 		int c_c3 = 0;
@@ -175,8 +178,6 @@ public class P_c3 extends Creature
 				game.arrSize2 = c3.length-1;
 				game.checkCount2();
 				c_c3 = game.count_c3;
-				//time.sleep(500000);
-				//c_c22++;
 				g.drawImage(c3[c_c3], (int) x, (int) y,this.width,this.height, null);
 				if(c_c3==game.arrSize2)
 				{
@@ -188,6 +189,17 @@ public class P_c3 extends Creature
 			
 			
 		}
+				
+		else if(flagship == "jump"&&dead==false)
+		{
+			g.drawImage(Assets.c3_spin[c_c31], (int) x, (int) y,250,DC_height, null);
+			if(y>600&&count==0)
+			{
+				flagship="stand";
+			}
+			
+		}
+		
 		else if(flagship == "death"&&dead==false)
 		{
 			c3 = Assets.c3_defeat;  
@@ -208,15 +220,14 @@ public class P_c3 extends Creature
 		else if (flagship=="dead")
 		{
 			g.drawImage(Assets.c3_defeat[4], (int) x, (int) y,250,DC_height, null);
-		}
-		else if(flagship == "jump"&&dead==false)
-		{
-			g.drawImage(Assets.c3_spin[c_c31], (int) x, (int) y,250,DC_height, null);
-			if(y>600&&count==0)
-			{
-				flagship="stand";
-			}
-			
+		//	g.drawImage(Assets.go, (int) 500, (int) 500,250,DC_height,null);
+				
+//			attackTimer = 1;
+//			lastAttackTimer = 0;
+//			attackCooldown = 500000;
+//			if(checkTimerNext()) {
+		//		gm.quit();
+		//	}
 		}
 			
 	}
@@ -229,6 +240,7 @@ public class P_c3 extends Creature
 		if(health <= 0){
 			System.out.println("Defeated P3");
 			flagship="death";
+			game.gameOver = true;
 		}
 	}	
 	

@@ -1,8 +1,6 @@
 package game1;
 
-import java.awt.Color;
 import java.awt.Graphics;
-
 import game1.gfx.Assets;
 import game1.gfx.ImageLoader;
 

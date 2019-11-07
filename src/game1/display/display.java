@@ -1,12 +1,12 @@
 package game1.display;
 
 import java.awt.*;
-
+import game1.display.count_down;
 import javax.swing.*;
 
 public class display {
 	
-	private static JFrame frame;
+	public static JFrame frame;
 	private Canvas canvas;
 	private String title;
 	private int width,height;
@@ -24,14 +24,14 @@ public class display {
 	{
 		frame = new JFrame(title);
 		frame.setSize(width,height);
+		
+		count_down cd = new count_down();
+		frame.add(cd.timer());
+      
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-		frame.setUndecorated(true);
-		frame.setVisible(true);
-		
-
-		
+	
 		
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(width,height));
@@ -40,7 +40,9 @@ public class display {
 		canvas.setFocusable(false);
 		
 		frame.add(canvas);
-		frame.pack();
+		frame.setUndecorated(true);	
+		frame.pack();			
+		frame.setVisible(true);
 	}
 	
 	public Canvas getCanvas()

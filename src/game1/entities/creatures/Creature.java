@@ -1,7 +1,14 @@
 package game1.entities.creatures;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import game1.entities.Entity;
 import game1.states.State;
+import sun.audio.*;
+
 
 
 public abstract class Creature extends Entity {
@@ -22,7 +29,7 @@ public abstract class Creature extends Entity {
 	
 	public void move()
 	{
-		if((State.getState().getP2().getX()+State.getState().getP2().getWidth()-25) < State.getState().getP3().getX()+25)
+		if((State.getState().getP2().getX()+State.getState().getP2().getWidth()-25) < State.getState().getP3().getX()+50)
 			x += xMove;
 		else {
 			if(this == State.getState().getP2())
@@ -33,6 +40,19 @@ public abstract class Creature extends Entity {
 		
 		y += yMove;
 	}
+	
+	public static void playMusic(String filepath) {
+		InputStream music;
+		 
+		try {
+			music = new FileInputStream(new File(filepath));
+			AudioStream audios = new AudioStream(music);
+			AudioPlayer.player.start(audios);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 //Getters and Setters
 	public float getxMove() {
 		return xMove;
@@ -50,13 +70,6 @@ public abstract class Creature extends Entity {
 		this.yMove = yMove;
 	}
 
-	public int getHealth() {
-		return health;
-	}
-
-	public void setHealth(int health) {
-		this.health = health;
-	}
 
 	public float getSpeed() {
 		return speed;

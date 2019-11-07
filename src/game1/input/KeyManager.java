@@ -3,6 +3,7 @@ package game1.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
 public class KeyManager implements KeyListener{
 	
 	private boolean[] keys;
@@ -46,6 +47,7 @@ public class KeyManager implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
+	//	if(!game.gameOver)
 		keys[e.getKeyCode()] = true;
 		
 	}
