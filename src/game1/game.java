@@ -25,15 +25,11 @@ public class game implements Runnable
 	public String title;
 	public static boolean gameOver = false;
 	
-	private boolean running = false;
+	public boolean running = false;
 	private Thread thread;	
 	private BufferStrategy bs;
 	public Graphics g;
-	
-	//states
 	private State gameState;
-	
-	//Input
 	private static KeyManager keyManager;
 	public static sounds sound;
 	
@@ -194,12 +190,11 @@ public class game implements Runnable
 		if(game.getKeyManager().exit)
 		{
 			sound.stop();
-			System.exit(1);
-			
+			display.getFrame().dispose();
+			running = false;
+			new restore_defaults(this);
+			new front();
 		}
-		/*running = false;
-		new restore_defaults(this);
-		new front();*/	
 	}
 	
 }

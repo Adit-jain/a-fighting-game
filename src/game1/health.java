@@ -20,8 +20,8 @@ import game1.states.State;
 			 g.drawImage(Assets.hc,50,100,250,100, null);
 			 g.drawImage(Assets.hc2,1600,100,250,100, null);
 			 g.setColor(Color.GREEN);
-			 g.fillRect(73, 117, (int) ((State.getState().getP2().getHealth())*20.4) , 19);
-			 g.fillRect(1620, 116, (int) ((State.getState().getP3().getHealth())*20.4) , 19);
+			 g.fillRect(73, 117, (int) ((State.getState().getP2().getHealth())*7.3) , 19);
+			 g.fillRect(1620, 116, (int) ((State.getState().getP3().getHealth())*7.3) , 19);
 		}
 	}
 

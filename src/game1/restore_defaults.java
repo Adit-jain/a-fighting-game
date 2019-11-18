@@ -19,7 +19,7 @@ public class restore_defaults {
 		P_c3.dead = false;
 	}
 	
-	restore_defaults(game g){
+	public restore_defaults(game g){
 		restore_P2(g,280,600);
 		restore_P3(g,1400,620);
 		game.gameOver = false;

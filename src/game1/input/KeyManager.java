@@ -52,8 +52,9 @@ public class KeyManager implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
+		try {
 		keys[e.getKeyCode()] = true;
-		
+		} catch(Exception e1) {}
 		
 	}
 
