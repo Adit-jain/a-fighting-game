@@ -16,8 +16,7 @@ public abstract class State {
 	public static State getState(){
 		return currentState;
 	}
-	
-	//CLASS
+
 	
 	protected game game;
 	

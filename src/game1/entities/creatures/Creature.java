@@ -1,13 +1,7 @@
 package game1.entities.creatures;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
 import game1.entities.Entity;
 import game1.states.State;
-import sun.audio.*;
 
 
 
@@ -41,19 +35,7 @@ public abstract class Creature extends Entity {
 		y += yMove;
 	}
 	
-	public static void playMusic(String filepath) {
-		InputStream music;
-		 
-		try {
-			music = new FileInputStream(new File(filepath));
-			AudioStream audios = new AudioStream(music);
-			AudioPlayer.player.start(audios);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
-//Getters and Setters
+
 	public float getxMove() {
 		return xMove;
 	}

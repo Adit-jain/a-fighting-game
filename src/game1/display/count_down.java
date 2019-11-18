@@ -7,20 +7,24 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
 
-public class count_down { //extends JFrame{
+public class count_down {
 
-	JLabel jltime;
+	JLabel temp = new JLabel("");
+	public static JLabel jltime;
+	
 	NumberFormat format;
 
-    public Timer timer;
-    public long initial;
-    public long ttime2;
+    public static Timer timer;
+    private long initial;
+    private long ttime2;
     public String ttime;
-    public long remaining;
+    private long remaining;
     private game gm;
 
     
@@ -33,12 +37,13 @@ public class count_down { //extends JFrame{
     public JLabel timer() {
     	jltime = new JLabel(" ");
          jltime.setForeground(Color.BLACK);
-         jltime.setBackground(null);
-         jltime.setBounds(850,100,250,75);
+         jltime.setIcon(new ImageIcon("res/textures/cd_bg.png"));
+         jltime.setIconTextGap(-180);
+         jltime.setBounds(860,5,180,55);
          jltime.setOpaque(true);
          jltime.repaint();
-         jltime.setFont(new Font("Arial", Font.BOLD, 96));
-   //      ttime = "1";
+         jltime.setFont(new Font("Arial Black",Font.PLAIN ,60));
+  
          updateDisplay();
     	return jltime;
     } 
@@ -73,11 +78,11 @@ public class count_down { //extends JFrame{
                     + format.format(seconds));
 
             if (remaining == 0) {
-                jltime.setText("Over");
+                jltime.setText("");
                 timer.stop();
                 game.gameOver=true;
                 try {
-                    gm.quit();
+                    gm.quit(gm.g);
                     }
                     catch(NullPointerException e1) {
                     }

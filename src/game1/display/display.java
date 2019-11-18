@@ -26,10 +26,9 @@ public class display {
 		frame.setSize(width,height);
 		
 		count_down cd = new count_down();
-		frame.add(cd.timer());
+		
       
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 	
 		
@@ -38,7 +37,9 @@ public class display {
 		canvas.setMaximumSize(new Dimension(width,height));
 		canvas.setMinimumSize(new Dimension(width,height));
 		canvas.setFocusable(false);
-		
+
+		frame.add(cd.timer());
+		frame.add(cd.temp);
 		frame.add(canvas);
 		frame.setUndecorated(true);	
 		frame.pack();			

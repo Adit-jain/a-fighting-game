@@ -10,7 +10,9 @@ import game1.display.display;
 import game1.gfx.Assets;
 import game1.gfx.ImageLoader;
 import game1.gfx.SpriteSheet;
+import game1.display.count_down;
 import game1.input.KeyManager;
+import game1.sounds.sounds;
 import game1.states.GameState;
 import game1.states.State;
 
@@ -33,6 +35,7 @@ public class game implements Runnable
 	
 	//Input
 	private static KeyManager keyManager;
+	public static sounds sound;
 	
 	public game() {
 		
@@ -44,7 +47,7 @@ public class game implements Runnable
 		this.height= height;
 		this.title = title;
 		keyManager = new KeyManager();
-	//	init();
+		sound = new sounds("res/sounds/sound1.wav");
 	}
 	private void init()
 	{
@@ -71,7 +74,6 @@ public class game implements Runnable
 		long now;
 		long lastTime = System.nanoTime();
 		long timer = 0;
-		int ticks = 0;
 		int c_count = 0;
 		
 		
@@ -87,7 +89,6 @@ public class game implements Runnable
 			{
 			tick();
 			render();
-			ticks++;
 			delta--;
 			c_count++;
 		
@@ -104,8 +105,6 @@ public class game implements Runnable
 			}
 			if(timer>=1000000000)
 			{
-				//System.out.println("ticks and frames:" + ticks);
-				ticks = 0;
 				timer = 0;
 			}
 		}
@@ -188,12 +187,19 @@ public class game implements Runnable
 		} 
 	}
 	
-	public void quit() 
-	{		
-		display.getFrame().dispose();
-		running = false;
+	public void quit(Graphics g) 
+	{	
+		g.drawImage(Assets.go, 620, 0, null);
+	
+		if(game.getKeyManager().exit)
+		{
+			sound.stop();
+			System.exit(1);
+			
+		}
+		/*running = false;
 		new restore_defaults(this);
-		new front();	
+		new front();*/	
 	}
 	
 }

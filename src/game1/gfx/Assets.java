@@ -37,12 +37,16 @@ public class Assets {
 	static int width = 1024/6;
 	public static BufferedImage bg;
 	public static BufferedImage go;
+	public static BufferedImage hc,hc2;
 	
 	public static void init()
 	{	 
 		//background
 		bg = ImageLoader.loadImage("res/textures/area31.jpg");
 		go = ImageLoader.loadImage("res/textures/got2.png");
+		hc = ImageLoader.loadImage("res/textures/health.png");
+		hc2 = ImageLoader.loadImage("res/textures/health2.png");
+		
 		// Player c2
 		SpriteSheet S2 = new SpriteSheet(ImageLoader.loadImage("res/textures/BlueNinja2.png"));
 		c2_a1[0] = S2.crop(0,0,100,150);
@@ -147,13 +151,11 @@ public class Assets {
 		c3_throw[2] = S3.crop(32,400,100,160);
 		c3_throw[1] = S3.crop(140,400,100,160);
 		c3_throw[0] = S3.crop(240,400,100,160);
-		//c3_a3[6] = S3.crop(340,0,120,120);
 		c3_a3[4] = S3.crop(490,0,125,146);
 		c3_a3[3] = S3.crop(360,400,120,153);
 		c3_a3[2] = S3.crop(480,400,160,153);
 		c3_a3[1] = S3.crop(640,400,140,153);
 		c3_a3[0] = S3.crop(790,400,160,153);
-	//	c3_a3[0] = S3.crop(760,0,90,120);
 		
 	}
 

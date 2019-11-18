@@ -1,6 +1,7 @@
 package game1.states;
 import game1.World;
 import game1.game;
+import game1.health;
 import game1.entities.creatures.P_c2;
 import game1.entities.creatures.P_c3;
 import java.awt.Graphics;
@@ -12,6 +13,7 @@ public class GameState extends State {
 private World world;
 private P_c2 P_2;
 private P_c3 P_3;
+health hc = new health();
 	
 	public GameState(game game){
 		super(game);
@@ -26,8 +28,8 @@ private P_c3 P_3;
 		world.tick();
 		P_2.tick();
 		P_3.tick();	
-		if(game.gameOver)
-			game.quit();	
+		hc.tick();
+		
 	}
 	
 
@@ -37,8 +39,9 @@ private P_c3 P_3;
 		world.render(g);
 		P_2.render(g);
 		P_3.render(g);
+		hc.render(g);
 		if(game.gameOver)
-			game.quit();
+			game.quit(g);
 	}
 	
 	

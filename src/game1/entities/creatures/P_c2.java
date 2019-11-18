@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import game1.gfx.Assets;
 import game1.states.State;
 import game1.game;
+import game1.display.count_down;
 
 
 public class P_c2 extends Creature
@@ -100,6 +101,12 @@ public class P_c2 extends Creature
 			xMove = 1;
 					if(y<350)
 						count=0;
+		}
+		if(game.getKeyManager().exit)
+		{
+			game.sound.stop();
+			System.exit(1);
+			
 		}
 	}
 
@@ -220,14 +227,8 @@ public class P_c2 extends Creature
 		else if (flagship=="dead")
 		{
 			g.drawImage(Assets.c2_defeat[4], (int) x, (int) y,250,DC_height, null);
-		//	g.drawImage(Assets.go, (int) 500, (int) 500,250,DC_height,null);
-			
-//			attackTimer = 1;
-//					lastAttackTimer = 0;
-//			attackCooldown = 500000;
-//			if(checkTimerNext()) {
-			//gm.quit();
-		//	}
+			count_down.jltime.setText("");
+			count_down.timer.stop();
 		}
 					
 	}
@@ -239,9 +240,9 @@ public class P_c2 extends Creature
 		if(health>0)
 		flagship="hurt";
 		if(health <= 0){
-			System.out.println("Defeated P2");
 			flagship="death"; 
 			game.gameOver = true;
+			//count_down.remaining = 0;
 		}
 	}
 	

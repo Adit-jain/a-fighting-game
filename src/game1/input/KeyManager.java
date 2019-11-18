@@ -4,10 +4,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
+
 public class KeyManager implements KeyListener{
 	
 	private boolean[] keys;
-	public boolean up3,down3,left3,right3,up2,down2,left2,right2,atk2_1,atk2_2,atk2_3,jump2,atk3_1,atk3_2,atk3_3,jump3;
+	public boolean up3,down3,left3,right3,up2,down2,left2,right2,atk2_1,atk2_2,atk2_3,jump2,atk3_1,atk3_2,atk3_3,jump3,exit,adstop;
 	
 	public KeyManager() 
 	{
@@ -36,6 +37,10 @@ public class KeyManager implements KeyListener{
 		atk2_3 = keys[KeyEvent.VK_C];
 		jump2 = keys[KeyEvent.VK_SPACE];
 		
+		
+		exit = keys[KeyEvent.VK_ESCAPE];
+		adstop = keys[KeyEvent.VK_BACK_SPACE];
+		
 	}
 	@Override
 	public void keyTyped(KeyEvent e) 
@@ -47,8 +52,8 @@ public class KeyManager implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
-	//	if(!game.gameOver)
 		keys[e.getKeyCode()] = true;
+		
 		
 	}
 

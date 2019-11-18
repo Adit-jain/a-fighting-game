@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import game1.display.display;
 import game1.gfx.Assets;
+import game1.sounds.sounds;
 public class front implements ActionListener
 {
 
@@ -28,18 +29,18 @@ public class front implements ActionListener
         ImageIcon start = new ImageIcon("res\\textures\\start.png");
         ImageIcon quit = new ImageIcon("res\\textures\\quit.png");
         ImageIcon front = new ImageIcon("res\\textures\\front2.jpg");
-        ImageIcon settings = new ImageIcon("res\\textures\\settings.jpg");
+       // ImageIcon sound = new ImageIcon("res\\textures\\settings.jpg");
         
         
         btn1 = new JButton(start);
-        btn1.setBounds(0, 10,start.getIconWidth(),start.getIconHeight());
+        btn1.setBounds(8, 10,start.getIconWidth(),start.getIconHeight());
         
         
         btn2 = new JButton(quit);
-        btn2.setBounds(0, 372,quit.getIconWidth(),quit.getIconHeight());
+        btn2.setBounds(8, 190,quit.getIconWidth(),quit.getIconHeight());
 
-        btn3 = new JButton(settings);
-        btn3.setBounds(0, 190,settings.getIconWidth(),settings.getIconHeight());
+       // btn3 = new JButton(sound);
+        //btn3.setBounds(0, 372,sound.getIconWidth(),sound.getIconHeight());
         
        
         JLabel pic = new JLabel(front);
@@ -51,12 +52,12 @@ public class front implements ActionListener
         
         btn1.addActionListener(this);
         btn2.addActionListener(this);
-        btn3.addActionListener(this);
+      //  btn3.addActionListener(this);
        
 
         c.add(btn1);
         c.add(btn2);
-        c.add(btn3);
+        //c.add(btn3);
        
         c.add(pic);
         c.add(sac);
@@ -76,7 +77,8 @@ public class front implements ActionListener
     {
         if(ac.getSource()==btn1)
         {
-        	game ob=new game("Title!",1920,1080);
+        	game ob=new game("SHILP V/S UJJWAL",1920,1080);
+        	
     		ob.start();
         
         frame.dispose();
