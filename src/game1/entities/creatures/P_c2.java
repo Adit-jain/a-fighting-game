@@ -4,8 +4,11 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import game1.gfx.Assets;
 import game1.states.State;
+import game1.front;
 import game1.game;
+import game1.restore_defaults;
 import game1.display.count_down;
+import game1.display.display;
 
 
 public class P_c2 extends Creature
@@ -105,7 +108,10 @@ public class P_c2 extends Creature
 		if(game.getKeyManager().exit)
 		{
 			game.sound.stop();
-			System.exit(1);
+			display.getFrame().dispose();
+			gm.running = false;
+			new restore_defaults(gm);
+			new front();
 			
 		}
 	}
@@ -242,7 +248,6 @@ public class P_c2 extends Creature
 		if(health <= 0){
 			flagship="death"; 
 			game.gameOver = true;
-			//count_down.remaining = 0;
 		}
 	}
 	

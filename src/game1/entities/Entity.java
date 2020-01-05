@@ -10,7 +10,7 @@ public abstract class Entity {
 	protected int width, height;
 	protected int health;
 	protected Rectangle bounds;
-	public static final int Default_health=10;
+	public static final int Default_health=28;
 	
 	public Entity(float x, float y,int width,int height){
 		this.x = x;

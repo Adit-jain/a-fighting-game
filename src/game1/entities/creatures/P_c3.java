@@ -89,7 +89,7 @@ public class P_c3 extends Creature
 			State.getState().getP2().hurt(1);
 			xMove = -2*speed;
 		}
-		if(game.getKeyManager().jump3&&y>=600&&x<1350)
+		if(game.getKeyManager().jump3&&y>=600&&x<1450)
 		{
 			flagship = "jump";
 			count = 1;

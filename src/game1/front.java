@@ -17,9 +17,10 @@ public class front implements ActionListener
      public front()
     {
         frame = new JFrame("AKD presents");
-        frame.setBounds(0,0,1000,500);
+        frame.setBounds(0,0,1920,1080);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        frame.setUndecorated(true);
+        
         Font f = new Font("ARIAL", Font.ITALIC,20);
 
         Container c =frame.getContentPane();
@@ -44,7 +45,7 @@ public class front implements ActionListener
         
        
         JLabel pic = new JLabel(front);
-        pic.setBounds(200, 0, front.getIconWidth(), front.getIconHeight());
+        pic.setBounds(200, 0, front.getIconWidth()+10, front.getIconHeight()+20);
 
         
         JLabel sac = new JLabel("");
@@ -70,6 +71,7 @@ public class front implements ActionListener
         sac.setBounds(300, 50, 200, 40);
         c.add(sac);
 
+        frame.setVisible(true);
         
     }
 
